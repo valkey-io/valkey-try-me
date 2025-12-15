@@ -5,6 +5,7 @@ set -euo pipefail
 # Configuration
 # =================================
 MODE="${MODE:-remote}"
+AUTO_SAVE_STATE="${AUTO_SAVE_STATE:-false}"
 
 # =================================
 # Path Setup
@@ -106,3 +107,28 @@ if [[ -f "$TEMPLATE_PATH" ]]; then
 else
     echo "⚠️  Template $TEMPLATE_PATH not found, skipping HTML generation."
 fi
+
+# =================================
+# Automated State Save
+# =================================
+if [[ "$AUTO_SAVE_STATE" == "true" ]]; then
+    echo ""
+    echo "==> Running automated state save..."
+    
+    AUTOMATE_SCRIPT="$SCRIPT_DIR/automate_save_state.py"
+    
+    if [[ ! -f "$AUTOMATE_SCRIPT" ]]; then
+        echo "❌ Automation script not found: $AUTOMATE_SCRIPT"
+        exit 1
+    fi
+    
+    cd "$PROJECT_ROOT"
+    python3 "$AUTOMATE_SCRIPT" "$VALKEY_VERSION"
+    
+    echo "✅ Automated state save complete!"
+fi
+
+echo ""
+echo "========================================="
+echo "✅ Build Complete!"
+echo "========================================="

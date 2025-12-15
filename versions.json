@@ -13,6 +13,11 @@
         "baseurl": "https://download.valkey.io/try-me-valkey/8.1.0/fs/alpine-rootfs-flat",
         "basefs": "https://download.valkey.io/try-me-valkey/8.1.0/fs/alpine-fs.json",
         "state":"https://download.valkey.io/try-me-valkey/8.1.0/states/state.bin.gz"
+      },
+    "9.0.0": {
+        "baseurl": "https://download.valkey.io/try-me-valkey/9.0.0/fs/alpine-rootfs-flat",
+        "basefs": "https://download.valkey.io/try-me-valkey/9.0.0/fs/alpine-fs.json",
+        "state":"https://download.valkey.io/try-me-valkey/9.0.0/states/state.bin.gz"
       }
   }
   
